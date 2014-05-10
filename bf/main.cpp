@@ -3,7 +3,7 @@
 /**********************
  * author   : flyshine
  * date     : 2014-5-11 00:56:13
- * purpose  : a BF algorithm implement
+ * purpose  : a BF(Brute Force) algorithm implement
  *********************/
 
 using namespace std;
@@ -12,30 +12,25 @@ using namespace std;
 int bf(char* pMaster,char* pSub){
     int lenMaster=strlen(pMaster);
     int lenSub=strlen(pSub);
-    int position=-1;
     int i=0;
     int j=0;
     if(pMaster ==NULL || pSub == NULL || lenMaster <1 || lenSub <1){
-        return position;
+        return -1;
     }
     while(i<=(lenMaster - lenSub )){
         j=0;
         while(j<lenSub){
             if(pMaster[i+j] == pSub[j] && j==(lenSub-1)){
-                position=i;
-                break;
+                return i;
             }
             else if(pMaster[i+j] != pSub[j] ){
                 break;
             }
             j=j+1;
         }
-        if(position!=-1){
-            break;
-        }
         i=i+1;;
     }
-    return position;
+    return -1;
 }
 
 int main()
